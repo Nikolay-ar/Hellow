@@ -1,0 +1,67 @@
+#!/bin/bash
+
+#
+# Оrganization: GosNIIAS
+# Year        : 2023
+# Author      : Vorobev Alexey Vitalievich
+# EMail       : vorobev_av@gosniias.ru
+#
+
+################################################################################
+
+TARGET_PLATFORM="Linux"
+TARGET_ARCHITECTURE="AMD64"
+
+################################################################################
+
+if false; then
+    BUILD_TYPE="Release"
+    OPTIMIZATION_LEVEL="0"
+else
+    BUILD_TYPE="Debug"
+    OPTIMIZATION_LEVEL="g"
+fi
+
+################################################################################
+
+if false; then
+    BUILD_TRACE=true
+else
+    BUILD_TRACE=false
+fi
+
+################################################################################
+
+if false; then
+    BUILD_SAVE_INTERMEDIATE_FILES=true
+else
+    BUILD_SAVE_INTERMEDIATE_FILES=false
+fi
+
+################################################################################
+
+if true; then
+    BUILD_PRINT_COMMANDS=true
+else
+    BUILD_PRINT_COMMANDS=false
+fi
+
+################################################################################
+
+BIN_COMPILER="/usr/bin/gcc"
+BIN_STRIPPER="/usr/bin/strip"
+
+################################################################################
+
+DIRECTORY_SOURCES="./Sources"
+DIRECTORY_BUILD="./Build"
+
+################################################################################
+
+LIBRARIES_PATHS="../libGigEVision/Build/${TARGET_PLATFORM}/${TARGET_ARCHITECTURE}/${BUILD_TYPE}"
+
+LIBRARIES_DYNAMIC="GigEVision"
+
+LIBRARIES_STATIC=""
+
+################################################################################

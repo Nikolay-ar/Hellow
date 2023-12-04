@@ -1,0 +1,4 @@
+./Includes
+./Sources
+./Sources/3rdParty/qdbmp
+../libGigEVision/Includes

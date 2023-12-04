@@ -1,0 +1,13 @@
+*.sublime-project
+*.sublime-workspace
+*.creator.user*
+*.autosave
+*.config
+*.conf
+*.log
+*.log.gz
+[Bb]uild
+*.raw
+*.rg8
+*.bmp
+*.png

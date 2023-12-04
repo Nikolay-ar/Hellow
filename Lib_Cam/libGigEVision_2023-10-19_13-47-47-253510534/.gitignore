@@ -1,0 +1,15 @@
+*.sublime-project
+*.sublime-workspace
+*.creator.user*
+*.autosave
+*.config
+*.conf
+*.log
+*.log.gz
+[Bb]uild
+Devices/Prima/IVS-70/ivs_imitator-linux-x86_64_2023-04-17
+Devices/Prima/IVS-70/ivs70_service_client-linux-10.68.1.2-b1908_2023-06-07
+Devices/Prima/IVS-70/logs
+Devices/Prima/IVS-70/images
+Devices/Prima/IVS-70/firmware
+.~lock.*

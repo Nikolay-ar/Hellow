@@ -1,0 +1,26 @@
+#!/bin/bash
+
+#
+# Оrganization: GosNIIAS
+# Year        : 2023
+# Author      : Vorobev Alexey Vitalievich
+# EMail       : vorobev_av@gosniias.ru
+#
+
+################################################################################
+
+OPTION_DEVICE="\"Crevis MG-A320K-35\" | \"Crevis MG-A500M-22\" | \"Prima IVS-70\""
+OPTION_SOURCE="127.0.0.1"
+OPTION_DESTINATION="127.0.0.1"
+
+################################################################################
+
+#
+# For "Crevis MG-A320K-35" only
+#
+
+OPTION_USE_PYTHON_CONVERTER=false
+
+PYTHON_CONVERTER="./GigEVision_Test.convert.py"
+
+################################################################################

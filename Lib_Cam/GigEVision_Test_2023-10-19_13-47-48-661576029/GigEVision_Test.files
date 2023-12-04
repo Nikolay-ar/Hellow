@@ -1,0 +1,17 @@
+./Data/.gitkeep
+./GigEVision_Test.bayer.txt
+./GigEVision_Test.build.conf
+./GigEVision_Test.build.conf.example
+./GigEVision_Test.build.sh
+./GigEVision_Test.config.example
+./GigEVision_Test.convert.py
+./GigEVision_Test.creator
+./GigEVision_Test.files.sh
+./GigEVision_Test.pack.sh
+./GigEVision_Test.run.conf
+./GigEVision_Test.run.conf.example
+./GigEVision_Test.run.sh
+./.gitignore
+./Sources/3rdParty/qdbmp/qdbmp.c
+./Sources/3rdParty/qdbmp/qdbmp.h
+./Sources/GigEVision_Test.c
