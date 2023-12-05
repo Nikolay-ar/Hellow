@@ -6,27 +6,24 @@
             "command": "/usr/bin/gcc",
             "args": [
                 "-fdiagnostics-color=always",
-                "-ggdb",                
-                //"-g",
+                "-g",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
                 "${file}",
                 "${workspaceFolder}/3rdParty/qdbmp/qdbmp.c",
                 // "${workspaceFolder}/Lib_Cam/libGigEVision_2023-10-19_13-47-47-253510534/Sources/GigEVision.c",
                 "-lm",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
-
+                "-L.", 
+                "-lGigEVision",
+                "-Wl,-rpath,.",
                 "-I",
                 "${workspaceFolder}/3rdParty/qdbmp",
                 "-I",
                 "${workspaceFolder}/Lib_Cam/libGigEVision_2023-10-19_13-47-47-253510534/Includes",
                 "-I",
-                "${workspaceFolder}/Lib_Cam/libGigEVision_2023-10-19_13-47-47-253510534/Sources",
-                
-                //"-Wl, -rpath", "${workspaceFolder}/lib/",
-                "-L", 
-                "${workspaceFolder}/lib",
-                "-lGigEVision"
-
+                "${workspaceFolder}/Lib_Cam/libGigEVision_2023-10-19_13-47-47-253510534/Sources"
+               
+                //"-Wl, -rpath", "${workspaceFolder}/lib/"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -46,24 +43,19 @@
             "label": "C/C++: gcc build library",
             "command": "/usr/bin/gcc",
             "args": [
-                "-fdiagnostics-color=always",
-                //"-g",
-                "-ggdb",
-                "${workspaceFolder}/Lib_Cam/libGigEVision_2023-10-19_13-47-47-253510534/Sources/GigEVision.c",
-                "-lm",
+                "-shared",
+                "-Wall",
+                "-fPIC",
                 "-o",
                 "${workspaceFolder}/libGigEVision.so",
-                "--shared", "-fPIC",
-                //"ar", "-cr",
-
+                "${workspaceFolder}/Lib_Cam/libGigEVision_2023-10-19_13-47-47-253510534/Sources/GigEVision.c",
+                "-lm",
                 "-I",
                 "${workspaceFolder}/3rdParty/qdbmp",
                 "-I",
                 "${workspaceFolder}/Lib_Cam/libGigEVision_2023-10-19_13-47-47-253510534/Includes",
                 "-I",
                 "${workspaceFolder}/Lib_Cam/libGigEVision_2023-10-19_13-47-47-253510534/Sources",
-                
-
             ],
             "options": {
                 "cwd": "${fileDirname}"
