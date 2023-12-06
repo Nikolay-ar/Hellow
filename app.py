@@ -15,12 +15,11 @@ class GigEVision_Status(enum.IntEnum):
 
 
 class GigEVision_Context_t(ctypes.Structure):  # Задаем структуру
-    _fields_ = [("Device", ctypes.c_int32),
-                ("Address_Source", (ctypes.c_char*16)),
-                ("Address_Destination", (ctypes.c_char*16)),
-                ("Empty", ctypes.POINTER(ctypes.c_char))
+    _fields_ = [("Device", ctypes.c_int32),                     # 4   байта
+                ("Address_Source", (ctypes.c_uint8*16)),        # 16  байт
+                ("Address_Destination", (ctypes.c_char*16)),    # 16  байт
+                ("Empty", (ctypes.c_uint8*574))                 # 574 байта
                 ]
-
 
 # Подключение DLL
 libGigEVision_dll = ctypes.cdll.LoadLibrary("./libGigEVision.so")
@@ -36,9 +35,10 @@ GigEVision_Get_SingleFrame.restype = ctypes.c_int32
 GigEVision_Close = libGigEVision_dll.GigEVision_Close
 GigEVision_Close.restype = ctypes.c_int32
 
-Context = GigEVision_Context_t()
 
+Context = GigEVision_Context_t()
 pContext = ctypes.pointer(Context)
+
 Status = GigEVision_Open(  1,          #   Device
                         b"172.18.16.23",        # Address_Source
                         b"172.18.16.24",        # Address_Destination
@@ -81,20 +81,14 @@ else:
     print("GigEVision_Get_SingleFrame Error")
     exit()
 
-            #     &Context,
-            #      GIGEVISION_SIZE_BUFFER_IMAGE_BAYER_RG8_2064x1544,
-            #     &(Image_BayerRG8_2064x1544 [0]),
-            #     &Payload_Size,
-            #      NULL,
-            #      NULL
-            # );
 
 # Width and height of Bayer image, not original which is w/2 x h/2      Ширина и высота изображения Bayer, не оригинального, которое составляет w/2 x h/2
 w, h = 2064, 1544
 ow, oh = w//2, h//2
 
 # Load in Bayer8 image, assumed raw 8-bit RGGB                          Загружается в изображение Bayer8, предполагается необработанный 8-битный RGGB
-bayer = np.fromfile('./Data/GigEVision_Test.rg8', dtype=np.uint8).reshape((h,w))
+# bayer = np.fromfile('./Data/GigEVision_Test.rg8', dtype=np.uint8).reshape((h,w))
+
 bayer = np.ctypeslib.as_array(Image_BayerRG8_2064x1544).reshape((h,w))     # Картинка из указателя
 
 # Pick up raw uint8 samples                                             Возьмите необработанные образцы uint8
